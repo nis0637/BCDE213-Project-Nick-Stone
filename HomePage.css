@@ -29,13 +29,13 @@ header {
 	color: #fff;
 	text-decoration: none;
 	padding: 5px 20px;
-	font-family: poppins;
-	font-size: 16px;
+	font-size: 1.2em;
 	text-transform: uppercase;
 }
 .nav-area li a:hover {
 	background: #fff;
 	color: #333;
+	border-radius: 0.5em;
 }
 .logo {
 	float: left;
@@ -74,7 +74,7 @@ header {
 
 main {
     display: grid;
-    grid-template-columns: 1fr 50rem 1fr;
+    grid-template-columns: 1fr 42rem 1fr;
 }
 
 .main-content {
@@ -84,6 +84,7 @@ main {
 .main-content h2 {
     margin-top: 2em;
     margin-bottom: 1em;
+	border-bottom: 1px solid #3f83aa;
 }
 
 footer {
@@ -105,7 +106,7 @@ footer {
 		margin: auto;
 	}
 	img {
-		width: ;
+		width: 100%;
 	}
 	.nav-area {
 		float: none;
