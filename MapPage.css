@@ -58,7 +58,7 @@ footer {
     margin-top: 5em;
 }
 
-#Map {
-	height: 180px;
-	Width: 100%;
+#map {
+    height: 80vh;
+    width: 100%;
 }

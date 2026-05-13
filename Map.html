@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map | Christchurch Fruit Trail</title>
-    <link rel="stylesheet" href="MapPage.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Map | Christchurch Fruit Trail</title>
+        <link rel="stylesheet" href="MapPage.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    </head>
 
-<body>
-    <header>
-        <div class="wrapper">
-            <div class="logo"><img src="Images/Logo2.png" alt="Christchurch Fruit Trail Logo"></div>
-            <ul class="nav-area">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Map</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Tutorial</a></li>
-            </ul>
-        </div>
-    </header>
+    <body>
+        <header>
+            <div class="wrapper">
+                <div class="logo"><img src="Images/Logo2.png" alt="Christchurch Fruit Trail Logo"></div>
+                <ul class="nav-area">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Map</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Tutorial</a></li>
+                </ul>
+            </div>
+        </header>
 
-    <main>
-        <div id="map"></div>
-    </main>
+        <main>
+            <div id="map"></div>
+        </main>
 
-</body>
+    </body>
+    <script>
+        var map = L.map('map').setView([-43.5321, 172.6362], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        fetch("data/trees.geojson")
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    onEachFeature: function (feature, layer) {
+                        if (feature.properties) {
+                            layer.bindPopup(
+                                `<b>${feature.properties.name}</b><br>` +
+                                `Type: ${feature.properties.type}`
+                            );
+                        }
+                    }
+                }).addTo(map)
+            });
+
+
+    </script>
+</html>
