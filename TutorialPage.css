@@ -1,0 +1,89 @@
+* {
+	margin: 0; 
+	padding: 0; 
+}
+body {
+	font-family: 'Lato', sans-serif;
+}
+.wrapper {
+    width: 90%;
+    max-width: 1170px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+header {
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(images/1.jpg);
+	height: 10em;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+
+.nav-area {
+	list-style: none;
+	margin-top: 30px;
+    gap: 20px;
+}
+.nav-area li {
+	display: inline-block;
+}
+.nav-area li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 5px 20px;
+	font-size: 1.2em;
+	text-transform: uppercase;
+}
+.nav-area li a:hover {
+	background: #fff;
+	color: #333;
+}
+
+.logo img {
+	width: 100%;
+	padding: 15px 0;
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 52rem 1fr;
+}
+
+.TutorialVideo{
+    grid-column: 2;
+}
+
+.TutorialVideo img {
+    width: 100%;
+    margin: 2em;
+}
+.Tutorial-Step{
+    grid-column: 2;
+    margin-top: 2em;
+}
+
+.Tutorial-Step h3{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: grey;
+}
+.main-content h2 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+	border-bottom: 1px solid #3f83aa;
+}
+
+footer {
+    background-color: gray;
+    color: white;
+    padding: 2em;
+    margin-top: 4em;
+}
+
+
