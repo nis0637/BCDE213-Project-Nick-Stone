@@ -52,10 +52,9 @@ header {
 
 
 footer {
-    background-color: peru;
+    background-color: gray;
     color: white;
     padding: 2em;
-    margin-top: 5em;
 }
 
 #map {

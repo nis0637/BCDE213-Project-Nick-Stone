@@ -11,6 +11,10 @@
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css">
+        <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
     </head>
 
     <body>
@@ -30,6 +34,10 @@
             <div id="map"></div>
         </main>
 
+        <footer>
+        <P>&copy; Nick Stone, 2026</P>
+    </footer>
+
     </body>
     <script>
         var map = L.map('map').setView([-43.5321, 172.6362], 13);
@@ -39,19 +47,35 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
+        var markers = L.markerClusterGroup();
+
         fetch("data/trees.geojson")
             .then(response => response.json())
             .then(data => {
-                L.geoJSON(data, {
+                var geoLayer = L.geoJSON(data, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 10,
+                            fillColor: feature.properties.color,
+                            color: "#000",
+                            weight: 2,
+                            fillOpacity: 0.9
+                        });
+                    },
                     onEachFeature: function (feature, layer) {
                         if (feature.properties) {
-                            layer.bindPopup(
-                                `<b>${feature.properties.name}</b><br>` +
-                                `Type: ${feature.properties.type}`
-                            );
+                            layer.bindPopup(`
+                                <div class="TreePopUp">
+                                    <h3>${feature.properties.Name}</h3>
+                                    <p><strong>Type:</strong> ${feature.properties.group}</p>
+                                    <p><strong>Botanical:</strong> ${feature.properties.Botanical}</p>
+                            `);
                         }
                     }
-                }).addTo(map)
+                })
+                markers.addLayer(geoLayer);
+                map.addLayer(markers);
+                
             });
 
 
