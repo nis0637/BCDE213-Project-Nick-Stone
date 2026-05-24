@@ -3,21 +3,18 @@
 	padding: 0; 
 }
 body {
-	font-family: 'Lato', sans-serif;
+	font-family: Gill Sans MT
 }
 .wrapper {
-    width: 90%;
-    max-width: 1170px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 6em;
 }
 
 header {
 	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(images/1.jpg);
-	height: 10em;
+	height: 6em;
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: center center;
@@ -25,9 +22,8 @@ header {
 }
 
 .nav-area {
+	float: right;
 	list-style: none;
-	margin-top: 30px;
-    gap: 20px;
 }
 .nav-area li {
 	display: inline-block;

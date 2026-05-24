@@ -3,15 +3,17 @@
 	padding: 0; 
 }
 body {
-	font-family: 'Lato', sans-serif;
+	font-family: Gill Sans MT
 }
 .wrapper {
-	width: 1170px;
-	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 6em;
 }
 header {
 	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(images/1.jpg);
-	height: 100vh;
+	height: 57em;
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: center center;
@@ -20,7 +22,6 @@ header {
 .nav-area {
 	float: right;
 	list-style: none;
-	margin-top: 30px;
 }
 .nav-area li {
 	display: inline-block;
@@ -45,17 +46,14 @@ header {
 	padding: 15px 0;
 }
 .welcome-text {
-	position: absolute;
-	width: 600px;
-	height: 300px;
-	margin: 20% 30%;
+	margin: 15% 20%;
 	text-align: center;
 }
 .welcome-text h1 {
 	text-align: center;
 	color: #fff;
 	text-transform: uppercase;
-	font-size: 60px;
+	font-size: 4em;
 }
 .welcome-text a {
 	border: 1px solid #fff;

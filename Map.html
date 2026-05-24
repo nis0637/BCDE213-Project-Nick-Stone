@@ -1,83 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Map | Christchurch Fruit Trail</title>
-        <link rel="stylesheet" href="MapPage.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""></script>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css">
-        <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map | Christchurch Fruit Trail</title>
 
-    </head>
+    <link rel="stylesheet" href="MapPage.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css">
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+</head>
 
-    <body>
-        <header>
-            <div class="wrapper">
-                <div class="logo"><img src="Images/Logo2.png" alt="Christchurch Fruit Trail Logo"></div>
-                <ul class="nav-area">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Map</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="tutorial.html">Tutorial</a></li>
-                </ul>
-            </div>
-        </header>
+<body>
 
-        <main>
-            <div id="map"></div>
-        </main>
 
-        <footer>
-        <P>&copy; Nick Stone, 2026</P>
-    </footer>
+<header>
+    <div class="wrapper">
+        <div class="logo"><img src="Images/Logo2.png" alt="Christchurch Fruit Trail Logo"></div>
+        <ul class="nav-area">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Map</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tutorial.html">Tutorial</a></li>
+        </ul>
+    </div>
+</header>
 
-    </body>
-    <script>
-        var map = L.map('map').setView([-43.5321, 172.6362], 13);
+<main>
+    <div id="map">
+        <div id="filterContainer">
+            <label for="fruitFilter">Filter by fruit type:</label>
+            <select id="fruitFilter">
+                <option value="all">All</option>
+            </select>
+        </div>
+    </div>
 
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    <div class="content-wrapper">
+        <div class="main-content">
+            <h2>About the Map</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel efficitur ex. Ut vestibulum rutrum risus a sollicitudin. Quisque tristique, turpis in lacinia fringilla, sem diam commodo mauris, quis egestas arcu ipsum a eros. Donec quis eleifend odio. Maecenas in condimentum magna. Vestibulum ac felis ut ante posuere blandit vitae vitae nibh. Fusce rhoncus dignissim purus, quis scelerisque massa gravida in. Nulla facilisi. Fusce sollicitudin odio id urna congue, id ullamcorper nisl fringilla. Nulla mollis, ex a condimentum posuere, mauris nisi lobortis sapien, quis blandit nulla mauris in est. Etiam sit amet consequat lectus. Etiam nec justo imperdiet, tincidunt libero sed, laoreet metus. Aliquam convallis egestas gravida. Cras quis sapien et urna interdum elementum. Donec convallis lorem non massa cursus, interdum porttitor risus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent vitae erat ut augue ultricies vehicula. Morbi dui nisi, viverra ut lectus quis, varius pulvinar purus. Phasellus maximus nulla et mauris imperdiet tincidunt. Vestibulum nec neque vitae quam lacinia pulvinar. Praesent at tortor varius, eleifend purus vitae, varius odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec tempus, massa ut aliquet ornare, ipsum est tempor justo, id dignissim tortor massa eget tortor. Nullam pulvinar, nisi et pulvinar mattis, dolor tellus commodo quam, eget aliquam diam mauris sed massa.</p>
+            <button type="button"><a href="tutorial.html">View Tutorial</a></button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; Nick Stone, 2026</p>
+</footer>
+
+<script>
+    var map = L.map('map').setView([-43.5321, 172.6362], 13);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
 
-        var markers = L.markerClusterGroup();
+    var routingControl = L.Routing.control({
+        waypoints: [],
+        routeWhileDragging: true,
+        show: true
+    }).addTo(map);
 
-        fetch("data/trees.geojson")
-            .then(response => response.json())
-            .then(data => {
-                var geoLayer = L.geoJSON(data, {
-                    pointToLayer: function (feature, latlng) {
-                        return L.circleMarker(latlng, {
-                            radius: 10,
-                            fillColor: feature.properties.color,
-                            color: "#000",
-                            weight: 2,
-                            fillOpacity: 0.9
-                        });
-                    },
-                    onEachFeature: function (feature, layer) {
-                        if (feature.properties) {
-                            layer.bindPopup(`
-                                <div class="TreePopUp">
-                                    <h3>${feature.properties.Name}</h3>
-                                    <p><strong>Type:</strong> ${feature.properties.group}</p>
-                                    <p><strong>Botanical:</strong> ${feature.properties.Botanical}</p>
-                            `);
-                        }
-                    }
-                })
-                markers.addLayer(geoLayer);
-                map.addLayer(markers);
-                
+    var markers = L.markerClusterGroup();
+
+    let geoLayer;
+
+    let fruitTypes = new Set();
+
+fetch("data/trees.geojson")
+    .then(response => response.json())
+    .then(data => {
+
+        data.features.forEach(f => {
+            if (f.properties && f.properties.group) {
+                fruitTypes.add(f.properties.group.trim());
+            }
+        });
+
+        const filter = document.getElementById("fruitFilter");
+        fruitTypes.forEach(type => {
+            const opt = document.createElement("option");
+            opt.value = type;
+            opt.textContent = type;
+            filter.appendChild(opt);
+        });
+
+        geoLayer = L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, {
+                    radius: 10,
+                    fillColor: feature.properties.color,
+                    color: "#000",
+                    weight: 2,
+                    fillOpacity: 0.9
+                });
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(`
+                    <div class="TreePopUp">
+                        <h3>${feature.properties.Name}</h3>
+                        <p><strong>Type:</strong> ${feature.properties.group}</p>
+                        <p><strong>Botanical:</strong> ${feature.properties.Botanical}</p>
+                        <button class="routeButton" data-lat="${layer.getLatLng().lat}" data-lng="${layer.getLatLng().lng}">
+                            Get Directions
+                        </button>
+                    </div>
+                `);
+            }
+        });
+
+        markers.addLayer(geoLayer);
+        map.addLayer(markers);
+    });
+
+
+
+        document.getElementById("fruitFilter").addEventListener("change", function () {
+            const selected = this.value;
+
+            markers.clearLayers();
+
+            geoLayer.eachLayer(function (layer) {
+                const type = layer.feature.properties.group;
+
+                if (selected === "all" || type === selected) {
+                    markers.addLayer(layer);
+                }
             });
+        });
 
+        map.on('popupopen', function (e) {
+            const popupEl = e.popup.getElement();
+            const btn = popupEl.querySelector('.routeButton');
+            if (!btn) return;
+            
+            btn.addEventListener('click', function () {
+                const lat = parseFloat(this.dataset.lat);
+                const lng = parseFloat(this.dataset.lng);
 
-    </script>
+                map.locate();
+
+                map.once('locationfound', function(ev) {
+                    routingControl.setWaypoints([
+                        ev.latlng,
+                        L.latLng(lat, lng)
+                    ]);
+                });
+                map.once('locationerror', function() {
+                    alert("Could not get your location.");
+                });
+            });
+    });
+
+</script>
+
+</body>
 </html>
