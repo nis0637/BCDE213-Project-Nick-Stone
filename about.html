@@ -9,7 +9,14 @@
     <body>
         <header>
             <div class="wrapper">
-                <div class="logo"><img src="Images/Logo2.png" alt="Christchurch Fruit Trail Logo"></div>
+                <div class="logo"><a href="index.html"><img src="Images/Logo2.png" alt="Christchurch Fruit Trail Logo"></a></div>
+
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
                 <ul class="nav-area">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="Map.html">Map</a></li>
@@ -36,5 +43,11 @@
         <footer>
         <P>&copy; Nick Stone, 2026</P>
         </footer>
+
+        <script>
+        document.querySelector('.hamburger').addEventListener('click', function () {
+            document.querySelector('.nav-area').classList.toggle('open');
+        });
+        </script>
     </body>
 </html>

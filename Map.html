@@ -20,7 +20,14 @@
 
 <header>
     <div class="wrapper">
-        <div class="logo"><img src="Images/Logo2.png" alt="Christchurch Fruit Trail Logo"></div>
+        <div class="logo"><a href="index.html"><img src="Images/Logo2.png" alt="Christchurch Fruit Trail Logo"></a></div>
+
+         <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <ul class="nav-area">
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Map</a></li>
@@ -84,12 +91,14 @@ fetch("data/trees.geojson")
         });
 
         const filter = document.getElementById("fruitFilter");
-        fruitTypes.forEach(type => {
-            const opt = document.createElement("option");
-            opt.value = type;
-            opt.textContent = type;
-            filter.appendChild(opt);
-        });
+        [...fruitTypes]
+            .sort((a, b) => a.localeCompare(b))
+            .forEach(type => {
+                const opt = document.createElement("option");
+                opt.value = type;
+                opt.textContent = type;
+                filter.appendChild(opt);
+            });
 
         geoLayer = L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
@@ -156,6 +165,9 @@ fetch("data/trees.geojson")
                     alert("Could not get your location.");
                 });
             });
+    });
+    document.querySelector('.hamburger').addEventListener('click', function () {
+        document.querySelector('.nav-area').classList.toggle('open');
     });
 
 </script>
