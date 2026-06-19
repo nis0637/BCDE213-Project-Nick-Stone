@@ -13,7 +13,7 @@ body {
 }
 
 header {
-	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(images/1.jpg);
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(Images/1.jpg);
 	height: 6em;
 	-webkit-background-size: cover;
 	background-size: cover;
@@ -55,13 +55,14 @@ main {
     grid-column: 2;
 }
 
-.TutorialVideo img {
+.TutorialVideo {
     width: 100%;
-    margin: 2em;
+    margin-top: 2em;
 }
 .Tutorial-Step{
     grid-column: 2;
     margin-top: 2em;
+    line-height: 1.5em;
 }
 
 .Tutorial-Step h3{

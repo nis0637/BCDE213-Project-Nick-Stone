@@ -77,12 +77,18 @@ main {
 
 .main-content {
     grid-column: 2;
+    line-height: 2em;
 }
 
 .main-content h2 {
     margin-top: 2em;
     margin-bottom: 1em;
 	border-bottom: 1px solid #3f83aa;
+    font-size: 1.9em;
+}
+
+.main-content p {
+    font-size: 1.2em;
 }
 
 footer {
